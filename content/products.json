@@ -1,0 +1,42 @@
+[
+  {
+    "id": "9820394820394",
+    "title": "Tekk-sviiter (must)",
+    "picture": "https://prnt.sc/vt-s-yT1xGJi",
+    "price": 39.99,
+    "description": "Valmistatud paksust sametkangast, kapuutsiga tekk-sviiter on koheva tekstuuriga ning nahale meeldiva tundega.",
+    "quantity": 30
+  },
+  {
+    "id": "123420394820394",
+    "title": "Tommy Hilfigeri disainersussid",
+    "picture": "https://prnt.sc/X0StxviFRFtd",
+    "price": 69.99,
+    "description": "Luksuslikule lõõgastumisele kutsuvad jätkuvalt need pehmed sussid, millel on elegantne ristuv rihm lisamaks koju natuke hubast šikki.",
+    "quantity": 6
+  },
+  {
+    "id": "002029895394",
+    "title": "Tekk-sviiter (sinine)",
+    "picture": "https://prnt.sc/ZoDogc2_7WFa",
+    "price": 39.99,
+    "description": "Täiuslikult pehme, siidine ja mugav, teile meeldib siidi tunne nahal, kuid ei tunne liiga palju survet oma näo/silmade piirkonnas.",
+    "quantity": 8
+  },
+  {
+    "id": "92451394820394",
+    "title": "Masinpestav koeravoodi",
+    "picture": "https://prnt.sc/JRzszcHDpOxa",
+    "price": 29.99,
+    "description": "Pehme ja mugav koera magamiskoht: koera magamiskoha sisemine kangas on roosa velvet + seemisnahkne lühikarvaline plüüs",
+    "quantity": 3
+  },
+  {
+    "id": "1350394820394",
+    "title": "Siidist unemask (emerald)",
+    "picture": "https://prnt.sc/J9teHsgQhIJV",
+    "price": 24.99,
+    "description": "Lorem ipsum dolor sit amet consectetur. Pharetra in a bibendum diam donec amet.",
+    "quantity": 5
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "name": "simpleshop",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^4.5.14",
+    "@stripe/stripe-js": "^1.46.0",
+    "axios": "^1.2.1",
+    "next": "13.0.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-toastify": "^9.1.1",
+    "stripe": "^11.4.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "eslint": "8.30.0",
+    "eslint-config-next": "13.0.7",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4"
+  }
+}

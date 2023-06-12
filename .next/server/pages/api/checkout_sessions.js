@@ -1,0 +1,46 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(() => {
+var exports = {};
+exports.id = "pages/api/checkout_sessions";
+exports.ids = ["pages/api/checkout_sessions"];
+exports.modules = {
+
+/***/ "stripe":
+/*!*************************!*\
+  !*** external "stripe" ***!
+  \*************************/
+/***/ ((module) => {
+
+module.exports = require("stripe");
+
+/***/ }),
+
+/***/ "(api)/./pages/api/checkout_sessions/index.js":
+/*!**********************************************!*\
+  !*** ./pages/api/checkout_sessions/index.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ handler)\n/* harmony export */ });\n/* harmony import */ var stripe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! stripe */ \"stripe\");\n/* harmony import */ var stripe__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(stripe__WEBPACK_IMPORTED_MODULE_0__);\n\nconst stripe = new (stripe__WEBPACK_IMPORTED_MODULE_0___default())(process.env.STRIPE_SECRET_KEY, {\n    // https://github.com/stripe/stripe-node#configuration\n    apiVersion: \"2022-11-15\"\n});\nasync function handler(req, res) {\n    if (req.method === \"POST\") {\n        const cartItems = req.body;\n        try {\n            // Validate the amount that was passed from the client.\n            // Create Checkout Sessions from body params.\n            const params = {\n                payment_method_types: [\n                    \"card\"\n                ],\n                shipping_options: [\n                    {\n                        shipping_rate_data: {\n                            type: \"fixed_amount\",\n                            fixed_amount: {\n                                amount: 2000,\n                                currency: \"usd\"\n                            },\n                            display_name: \"Free shipping\",\n                            delivery_estimate: {\n                                minimum: {\n                                    unit: \"business_day\",\n                                    value: 5\n                                },\n                                maximum: {\n                                    unit: \"business_day\",\n                                    value: 7\n                                }\n                            }\n                        }\n                    }\n                ],\n                line_items: cartItems,\n                mode: \"payment\",\n                success_url: `${req.headers.origin}/?status=success`,\n                cancel_url: `${req.headers.origin}/?status=cancel`\n            };\n            const checkoutSession = await stripe.checkout.sessions.create(params);\n            res.status(200).json(checkoutSession);\n        } catch (err) {\n            console.log(err);\n            const errorMessage = err instanceof Error ? err.message : \"Internal server error\";\n            res.status(500).json({\n                statusCode: 500,\n                message: errorMessage\n            });\n        }\n    } else {\n        res.setHeader(\"Allow\", \"POST\");\n        res.status(405).end(\"Method Not Allowed\");\n    }\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9wYWdlcy9hcGkvY2hlY2tvdXRfc2Vzc2lvbnMvaW5kZXguanMuanMiLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQTRCO0FBRTVCLE1BQU1DLFNBQVMsSUFBSUQsK0NBQU1BLENBQUNFLFFBQVFDLEdBQUcsQ0FBQ0MsaUJBQWlCLEVBQUU7SUFDdkQsc0RBQXNEO0lBQ3REQyxZQUFZO0FBQ2Q7QUFFZSxlQUFlQyxRQUFRQyxHQUFHLEVBQUVDLEdBQUcsRUFBRTtJQUM5QyxJQUFJRCxJQUFJRSxNQUFNLEtBQUssUUFBUTtRQUN6QixNQUFNQyxZQUFZSCxJQUFJSSxJQUFJO1FBQzFCLElBQUk7WUFDRix1REFBdUQ7WUFDdkQsNkNBQTZDO1lBQzdDLE1BQU1DLFNBQVM7Z0JBQ2JDLHNCQUFzQjtvQkFBQztpQkFBTztnQkFDOUJDLGtCQUFrQjtvQkFDaEI7d0JBQ0VDLG9CQUFvQjs0QkFDbEJDLE1BQU07NEJBQ05DLGNBQWM7Z0NBQUVDLFFBQVE7Z0NBQU1DLFVBQVU7NEJBQU07NEJBQzlDQyxjQUFjOzRCQUNkQyxtQkFBbUI7Z0NBQ2pCQyxTQUFTO29DQUFFQyxNQUFNO29DQUFnQkMsT0FBTztnQ0FBRTtnQ0FDMUNDLFNBQVM7b0NBQUVGLE1BQU07b0NBQWdCQyxPQUFPO2dDQUFFOzRCQUM1Qzt3QkFDRjtvQkFDRjtpQkFDRDtnQkFDREUsWUFBWWhCO2dCQUNaaUIsTUFBTTtnQkFDTkMsYUFBYSxDQUFDLEVBQUVyQixJQUFJc0IsT0FBTyxDQUFDQyxNQUFNLENBQUMsZ0JBQWdCLENBQUM7Z0JBQ3BEQyxZQUFZLENBQUMsRUFBRXhCLElBQUlzQixPQUFPLENBQUNDLE1BQU0sQ0FBQyxlQUFlLENBQUM7WUFDcEQ7WUFDQSxNQUFNRSxrQkFBa0IsTUFBTS9CLE9BQU9nQyxRQUFRLENBQUNDLFFBQVEsQ0FBQ0MsTUFBTSxDQUFDdkI7WUFFOURKLElBQUk0QixNQUFNLENBQUMsS0FBS0MsSUFBSSxDQUFDTDtRQUN2QixFQUFFLE9BQU9NLEtBQUs7WUFDWkMsUUFBUUMsR0FBRyxDQUFDRjtZQUNaLE1BQU1HLGVBQ0pILGVBQWVJLFFBQVFKLElBQUlLLE9BQU8sR0FBRyx1QkFBdUI7WUFDOURuQyxJQUFJNEIsTUFBTSxDQUFDLEtBQUtDLElBQUksQ0FBQztnQkFBRU8sWUFBWTtnQkFBS0QsU0FBU0Y7WUFBYTtRQUNoRTtJQUNGLE9BQU87UUFDTGpDLElBQUlxQyxTQUFTLENBQUMsU0FBUztRQUN2QnJDLElBQUk0QixNQUFNLENBQUMsS0FBS1UsR0FBRyxDQUFDO0lBQ3RCLENBQUM7QUFDSCxDQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vc2ltcGxlc2hvcC8uL3BhZ2VzL2FwaS9jaGVja291dF9zZXNzaW9ucy9pbmRleC5qcz83NmI3Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBTdHJpcGUgZnJvbSBcInN0cmlwZVwiO1xyXG5cclxuY29uc3Qgc3RyaXBlID0gbmV3IFN0cmlwZShwcm9jZXNzLmVudi5TVFJJUEVfU0VDUkVUX0tFWSwge1xyXG4gIC8vIGh0dHBzOi8vZ2l0aHViLmNvbS9zdHJpcGUvc3RyaXBlLW5vZGUjY29uZmlndXJhdGlvblxyXG4gIGFwaVZlcnNpb246IFwiMjAyMi0xMS0xNVwiLFxyXG59KTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGFzeW5jIGZ1bmN0aW9uIGhhbmRsZXIocmVxLCByZXMpIHtcclxuICBpZiAocmVxLm1ldGhvZCA9PT0gXCJQT1NUXCIpIHtcclxuICAgIGNvbnN0IGNhcnRJdGVtcyA9IHJlcS5ib2R5O1xyXG4gICAgdHJ5IHtcclxuICAgICAgLy8gVmFsaWRhdGUgdGhlIGFtb3VudCB0aGF0IHdhcyBwYXNzZWQgZnJvbSB0aGUgY2xpZW50LlxyXG4gICAgICAvLyBDcmVhdGUgQ2hlY2tvdXQgU2Vzc2lvbnMgZnJvbSBib2R5IHBhcmFtcy5cclxuICAgICAgY29uc3QgcGFyYW1zID0ge1xyXG4gICAgICAgIHBheW1lbnRfbWV0aG9kX3R5cGVzOiBbXCJjYXJkXCJdLFxyXG4gICAgICAgIHNoaXBwaW5nX29wdGlvbnM6IFtcclxuICAgICAgICAgIHtcclxuICAgICAgICAgICAgc2hpcHBpbmdfcmF0ZV9kYXRhOiB7XHJcbiAgICAgICAgICAgICAgdHlwZTogXCJmaXhlZF9hbW91bnRcIixcclxuICAgICAgICAgICAgICBmaXhlZF9hbW91bnQ6IHsgYW1vdW50OiAyMDAwLCBjdXJyZW5jeTogXCJ1c2RcIiB9LFxyXG4gICAgICAgICAgICAgIGRpc3BsYXlfbmFtZTogXCJGcmVlIHNoaXBwaW5nXCIsXHJcbiAgICAgICAgICAgICAgZGVsaXZlcnlfZXN0aW1hdGU6IHtcclxuICAgICAgICAgICAgICAgIG1pbmltdW06IHsgdW5pdDogXCJidXNpbmVzc19kYXlcIiwgdmFsdWU6IDUgfSxcclxuICAgICAgICAgICAgICAgIG1heGltdW06IHsgdW5pdDogXCJidXNpbmVzc19kYXlcIiwgdmFsdWU6IDcgfSxcclxuICAgICAgICAgICAgICB9LFxyXG4gICAgICAgICAgICB9LFxyXG4gICAgICAgICAgfSxcclxuICAgICAgICBdLFxyXG4gICAgICAgIGxpbmVfaXRlbXM6IGNhcnRJdGVtcyxcclxuICAgICAgICBtb2RlOiBcInBheW1lbnRcIixcclxuICAgICAgICBzdWNjZXNzX3VybDogYCR7cmVxLmhlYWRlcnMub3JpZ2lufS8/c3RhdHVzPXN1Y2Nlc3NgLFxyXG4gICAgICAgIGNhbmNlbF91cmw6IGAke3JlcS5oZWFkZXJzLm9yaWdpbn0vP3N0YXR1cz1jYW5jZWxgLFxyXG4gICAgICB9O1xyXG4gICAgICBjb25zdCBjaGVja291dFNlc3Npb24gPSBhd2FpdCBzdHJpcGUuY2hlY2tvdXQuc2Vzc2lvbnMuY3JlYXRlKHBhcmFtcyk7XHJcblxyXG4gICAgICByZXMuc3RhdHVzKDIwMCkuanNvbihjaGVja291dFNlc3Npb24pO1xyXG4gICAgfSBjYXRjaCAoZXJyKSB7XHJcbiAgICAgIGNvbnNvbGUubG9nKGVycik7XHJcbiAgICAgIGNvbnN0IGVycm9yTWVzc2FnZSA9XHJcbiAgICAgICAgZXJyIGluc3RhbmNlb2YgRXJyb3IgPyBlcnIubWVzc2FnZSA6IFwiSW50ZXJuYWwgc2VydmVyIGVycm9yXCI7XHJcbiAgICAgIHJlcy5zdGF0dXMoNTAwKS5qc29uKHsgc3RhdHVzQ29kZTogNTAwLCBtZXNzYWdlOiBlcnJvck1lc3NhZ2UgfSk7XHJcbiAgICB9XHJcbiAgfSBlbHNlIHtcclxuICAgIHJlcy5zZXRIZWFkZXIoXCJBbGxvd1wiLCBcIlBPU1RcIik7XHJcbiAgICByZXMuc3RhdHVzKDQwNSkuZW5kKFwiTWV0aG9kIE5vdCBBbGxvd2VkXCIpO1xyXG4gIH1cclxufVxyXG4iXSwibmFtZXMiOlsiU3RyaXBlIiwic3RyaXBlIiwicHJvY2VzcyIsImVudiIsIlNUUklQRV9TRUNSRVRfS0VZIiwiYXBpVmVyc2lvbiIsImhhbmRsZXIiLCJyZXEiLCJyZXMiLCJtZXRob2QiLCJjYXJ0SXRlbXMiLCJib2R5IiwicGFyYW1zIiwicGF5bWVudF9tZXRob2RfdHlwZXMiLCJzaGlwcGluZ19vcHRpb25zIiwic2hpcHBpbmdfcmF0ZV9kYXRhIiwidHlwZSIsImZpeGVkX2Ftb3VudCIsImFtb3VudCIsImN1cnJlbmN5IiwiZGlzcGxheV9uYW1lIiwiZGVsaXZlcnlfZXN0aW1hdGUiLCJtaW5pbXVtIiwidW5pdCIsInZhbHVlIiwibWF4aW11bSIsImxpbmVfaXRlbXMiLCJtb2RlIiwic3VjY2Vzc191cmwiLCJoZWFkZXJzIiwib3JpZ2luIiwiY2FuY2VsX3VybCIsImNoZWNrb3V0U2Vzc2lvbiIsImNoZWNrb3V0Iiwic2Vzc2lvbnMiLCJjcmVhdGUiLCJzdGF0dXMiLCJqc29uIiwiZXJyIiwiY29uc29sZSIsImxvZyIsImVycm9yTWVzc2FnZSIsIkVycm9yIiwibWVzc2FnZSIsInN0YXR1c0NvZGUiLCJzZXRIZWFkZXIiLCJlbmQiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./pages/api/checkout_sessions/index.js\n");
+
+/***/ })
+
+};
+;
+
+// load runtime
+var __webpack_require__ = require("../../webpack-api-runtime.js");
+__webpack_require__.C(exports);
+var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+var __webpack_exports__ = (__webpack_exec__("(api)/./pages/api/checkout_sessions/index.js"));
+module.exports = __webpack_exports__;
+
+})();
